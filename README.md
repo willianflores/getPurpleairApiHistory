@@ -16,12 +16,12 @@ getPurpleairApiHistory(
 ## Arguments
 | Argment | Description |
 | --- | --- |
-| `sensorIndex` | List all *new or modified* files |
-| `apiReadKey` | Show file differences that **haven't been** staged |
-| `startTimeStamp` | Show file differences that **haven't been** staged |
-| `endTimeStamp` | Show file differences that **haven't been** staged |
-| `average` | Show file differences that **haven't been** staged |
-| `fields` | Show file differences that **haven't been** staged |
+| `sensorIndex` | The sensor index found in the url (`?select=index_sendor`) of a selected sensor in the purpleair maps [purpleair map](https://map.purpleair.com/1/mPM25/a10/p31536000/cC4?select=3968#10.91/-10.0081/-67.8154) |
+| `apiReadKey` | Chave de leitura da API PurpleAir com  acesso dados históricos. Acesse o sítio web  [PurpleAir Community](https://community.purpleair.com/t/historical-api-endpoints-are-now-restricted/1557) para mais informações. |
+| `startTimeStamp` | The beginning date in the format "YYYY-MM-DD" |
+| `endTimeStamp` | The end date in the format "YYYY-MM-DD" |
+| `average` | The desired average in minutes, one of the following: 0 (real-time), 10 (default if not specified), 30, 60, 360 (6 hour), 1440 (1 day)  |
+| `fields` | The 'Fields' parameter specifies which 'sensor data fields' to include in the response |
 
 ## Value
 
