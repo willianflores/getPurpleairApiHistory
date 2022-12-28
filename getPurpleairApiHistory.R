@@ -3,7 +3,7 @@ getPurpleairApiHistory <- function(
     apiReadKey=NULL,
     startTimeStamp=NULL,
     endTimeStamp=NULL,
-    average = "0",
+    average = NULL,
     fields = NULL,
     sensorName=NULL,
     munName=NULL
@@ -47,6 +47,9 @@ getPurpleairApiHistory <- function(
   if ( is.null(endTimeStamp) ) {
     stop("endTimeStamp not defined!")
   }
+  if ( is.null(average) ) {
+    stop("average not defined!")
+  }
   if ( is.null(fields) ) {
     stop("fields not defined!")
   }
@@ -58,16 +61,24 @@ getPurpleairApiHistory <- function(
   }
   
   # Set Time Stamp
-  start_timestamps <- seq(from=as.POSIXct(startTimeStamp)
+  t_dif <- as.POSIXct(endTimeStamp) - as.POSIXct(startTimeStamp)
+
+  if (t_dif < as.difftime(48, units = 'hours') ) {
+    start_timestamps <- as.POSIXct(startTimeStamp)
+  
+    end_timestamps   <- as.POSIXct(endTimeStamp) 
+  } else {
+    start_timestamps <- seq(from=as.POSIXct(startTimeStamp)
                           ,to=as.POSIXct(endTimeStamp),by="2 days")
   
-  end_timestamps   <- seq(from=as.POSIXct(startTimeStamp) + as.difftime(172799, units = 'secs')
+    end_timestamps   <- seq(from=as.POSIXct(startTimeStamp) + as.difftime(172799, units = 'secs')
                           ,to=as.POSIXct(endTimeStamp),by="2 days")
-  
-  if(length(start_timestamps) != length(end_timestamps)) {
-    end_timestamps   <- c(end_timestamps, as.POSIXct(endTimeStamp))
+
+    if(length(start_timestamps) != length(end_timestamps)) {
+      end_timestamps   <- c(end_timestamps, as.POSIXct(endTimeStamp))
+    }
   }
-  
+
   # Set variables for fill missing dates
   if (average == "10") {
     dif <- as.difftime(10, units = 'mins')
