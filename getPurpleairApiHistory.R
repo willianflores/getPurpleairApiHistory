@@ -1,13 +1,11 @@
 #------------------------------------------------------------------------------------------#
 #   Author: Antonio Willian Flores de Melo                                                 #
 #           Doctor in Tropical Forests Sciences                                            #
-#                                                                                          #
 #   Institution: Federal University of Acre                                                #
 #                Multidisciplinary Center - Campus Floresta                                #
 #                Estrada do Canela Fina, km 12                                             #
 #                Gleba Formoso, 66980-000                                                  #
 #                Cruzeiro do Sul, Acre, Brasil                                             #
-#                                                                                          #
 #   E-mails: willianflores@ufac.br                                                         #
 #            willianflores@gmail.com                                                       #
 #------------------------------------------------------------------------------------------#
