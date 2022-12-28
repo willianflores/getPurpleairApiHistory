@@ -4,9 +4,7 @@ getPurpleairApiHistory <- function(
     startTimeStamp=NULL,
     endTimeStamp=NULL,
     average = NULL,
-    fields = NULL,
-    sensorName=NULL,
-    munName=NULL
+    fields = NULL
 ) {
   # Load packages
   if (!require('httr')) {
@@ -52,12 +50,6 @@ getPurpleairApiHistory <- function(
   }
   if ( is.null(fields) ) {
     stop("fields not defined!")
-  }
-  if ( is.null(sensorName) ) {
-    stop("sensorName not defined!")
-  }
-  if ( is.null(munName) ) {
-    stop("munName not defined!")
   }
   
   # Set Time Stamp
@@ -211,9 +203,7 @@ getPurpleairApiHistory <- function(
       
       # Add basic information
       if (nrow(r_for) != 0) {
-        r_for$sensor_name <- sensor_name_list[i]
         r_for$sensor_id   <- sensor_id_list[i]
-        r_for$mun_name    <- mun_name_list[i]
       }
       
       # Set final request data frame
@@ -229,7 +219,7 @@ getPurpleairApiHistory <- function(
     
   } else {
     # Loop objects
-    URLbase <- paste0('https://api.purpleair.com/v1/sensors/',sensorIndex, '/history') 
+    URLbase <- paste0('https://api.purpleair.com/v1/sensors/',sensorIndex,'/history') 
     r     <- data.frame()
     r_for <- data.frame()
     
@@ -318,9 +308,7 @@ getPurpleairApiHistory <- function(
     
     # Add basic information
     if (nrow(r_for) != 0) {
-      r_for$sensor_name <- sensorName
       r_for$sensor_id   <- sensorIndex
-      r_for$mun_name    <- munName
     }
     
     # Set final request data frame
