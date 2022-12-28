@@ -21,7 +21,7 @@ getPurpleairApiHistory(
 | `apiReadKey` | PurpleAir API read key with access to historical data. See [PurpleAir Community](https://community.purpleair.com/t/historical-api-endpoints-are-now-restricted/1557) website for more information. |
 | `startTimeStamp` | The beginning date in the format `"YYYY-MM-DD HH:mm:ss"`. |
 | `endTimeStamp` | The end date in the format `"YYYY-MM-DD" HH:mm:ss`. |
-| `average` | The desired average in minutes, one of the following: `"0"` (real-time), `"10"` (default if not specified), `"30"`, `"60"`, `"360"` (6 hour), `"1440"`  (1 day).  |
+| `average` | The desired average in minutes, one of the following: `"0"` (real-time), `"10"`, `"30"`, `"60"`, `"360"` (6 hour), `"1440"`  (1 day).  |
 | `fields` | The `"Fields"` parameter specifies which 'sensor data fields' to include in the response. |
 
 ## Value
