@@ -4,18 +4,19 @@
 R function to download historical data from PurpleAir sensors in the new API
 
 ## Usage
-```R
+```r
 getPurpleairApiHistory(
-    sensorIndex=NULL,  
-    apiReadKey=NULL,
-    startTimeStamp=NULL,
-    endTimeStamp=NULL,
-    average = NULL,
-    fields = NULL
+    sensorIndex,  
+    apiReadKey,
+    startTimeStamp,
+    endTimeStamp,
+    average,
+    fields
 )
 ```
 
 ## Arguments
+
 
 ## Value
 
