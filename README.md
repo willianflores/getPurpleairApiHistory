@@ -36,7 +36,7 @@ Dataframe of PurpleAir history data of a single sensor or multiple sensors.
 ```R
 getPurpleairApiHistory(
     sensorIndex    = "31105",  
-    apiReadKey     = 43664AA0-305B-11ED-B5AA-42010A800010",
+    apiReadKey     = "43664AA0-305B-11ED-B5AA-42010A800010",
     startTimeStamp = "2022-12-26 00:00:00",
     endTimeStamp   = "2022-12-26 23:59:59",
     average        = "10"
