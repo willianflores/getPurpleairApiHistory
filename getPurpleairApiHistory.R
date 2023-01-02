@@ -200,8 +200,8 @@ getPurpleairApiHistory <- function(
       for (j in 1:length(start_timestamps)) {
         # Set variables
         queryList = list(
-          start_timestamp = as.character(as.integer(as.POSIXct(start_timestamps[j], "America/Bogota"))),
-          end_timestamp = as.character(as.integer(as.POSIXct(end_timestamps[j], "America/Bogota"))),
+          start_timestamp = as.character(as.integer(as.POSIXct(start_timestamps[j], Sys.timezone()))),
+          end_timestamp = as.character(as.integer(as.POSIXct(end_timestamps[j], Sys.timezone()))),
           average = average,
           fields = fields)
         
@@ -243,7 +243,7 @@ getPurpleairApiHistory <- function(
           rm(r_dataframe)
           r_dataframe <- data.frame(matrix(ncol = length(r_parsed$fields), nrow = 1))
           names(r_dataframe) <- r_parsed$fields
-          r_dataframe$time_stamp <- as.character(as.integer(as.POSIXct(start_timestamps[j], "America/Bogota")))
+          r_dataframe$time_stamp <- as.character(as.integer(as.POSIXct(start_timestamps[j], Sys.timezone())))
         }else{
           names(r_dataframe) <- r_parsed$fields
         }
@@ -251,7 +251,7 @@ getPurpleairApiHistory <- function(
         
         # Convert datetime format
         r_dataframe$time_stamp <- as.integer(r_dataframe$time_stamp)
-        r_dataframe$time_stamp <- as.POSIXlt(r_dataframe$time_stamp, origin="1970-01-01",  tz='America/Bogota')
+        r_dataframe$time_stamp <- as.POSIXlt(r_dataframe$time_stamp, origin="1970-01-01",  tz=Sys.timezone())
         
         # Fill missing dates
         if (average != "0") {
@@ -300,8 +300,8 @@ getPurpleairApiHistory <- function(
     for (j in 1:length(start_timestamps)) {
       # Set variables
       queryList = list(
-        start_timestamp = as.character(as.integer(as.POSIXct(start_timestamps[j], "America/Bogota"))),
-        end_timestamp = as.character(as.integer(as.POSIXct(end_timestamps[j], "America/Bogota"))),
+        start_timestamp = as.character(as.integer(as.POSIXct(start_timestamps[j], Sys.timezone()))),
+        end_timestamp = as.character(as.integer(as.POSIXct(end_timestamps[j], Sys.timezone()))),
         average = average,
         fields = fields)
       
@@ -343,14 +343,14 @@ getPurpleairApiHistory <- function(
         rm(r_dataframe)
         r_dataframe <- as.data.frame(data.frame(matrix(ncol = length(r_parsed$fields), nrow = 1)))
         names(r_dataframe) <- r_parsed$fields
-        r_dataframe$time_stamp <- as.integer(as.POSIXct(start_timestamps[j], "America/Bogota"))
+        r_dataframe$time_stamp <- as.integer(as.POSIXct(start_timestamps[j], Sys.timezone()))
       }else{
         names(r_dataframe) <- r_parsed$fields
       }
       
       ## Convert datetime format
       r_dataframe$time_stamp <- as.integer(r_dataframe$time_stamp)
-      r_dataframe$time_stamp <- as.POSIXlt(r_dataframe$time_stamp, origin="1970-01-01",  tz='America/Bogota')
+      r_dataframe$time_stamp <- as.POSIXlt(r_dataframe$time_stamp, origin="1970-01-01",  tz=Sys.timezone())
       
       # Fill missing dates
       if (average != "0") {
