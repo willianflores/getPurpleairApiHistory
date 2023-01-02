@@ -35,23 +35,23 @@ Dataframe of PurpleAir history data of a single sensor or multiple sensors.
 ### For a single sensor
 ```R
 getPurpleairApiHistory(
-    sensorIndex="31105",  
-    apiReadKey="43664AA0-305B-11ED-B5AA-42010A800010",
-    startTimeStamp="2022-12-26 00:00:00",
-    endTimeStamp="2022-12-26 23:59:59",
-    average="10"
-    fields=c("pm2.5_atm, pm2.5_atm_a, pm2.5_atm_b")
+    sensorIndex    = "31105",  
+    apiReadKey     = "43664AA0-305B-11ED-B5AA-42010A800010",
+    startTimeStamp = "2022-12-26 00:00:00",
+    endTimeStamp   = "2022-12-26 23:59:59",
+    average        = "10"
+    fields         = c("pm2.5_atm, pm2.5_atm_a, pm2.5_atm_b")
 )
 ```
 
 ### For multiple sensors
 ```R
 getPurpleairApiHistory(
-    sensorIndex=c("31105","31105","57177"),  
-    apiReadKey="43664AA0-305B-11ED-B5AA-42010A800010",
-    startTimeStamp="2022-12-26 00:00:00",
-    endTimeStamp="2022-12-26 23:59:59",
-    average="10"
-    fields=c("pm2.5_atm, pm2.5_atm_a, pm2.5_atm_b")
+    sensorIndex    = c("31105","31105","57177"),  
+    apiReadKey     = "43664AA0-305B-11ED-B5AA-42010A800010",
+    startTimeStamp = "2022-12-26 00:00:00",
+    endTimeStamp   = "2022-12-26 23:59:59",
+    average        = "10"
+    fields         = c("pm2.5_atm, pm2.5_atm_a, pm2.5_atm_b")
 )
 ```
