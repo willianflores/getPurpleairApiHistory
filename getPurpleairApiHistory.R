@@ -144,7 +144,7 @@ getPurpleairApiHistory <- function(
                                                                         ,orders = "b d Y H:M:S")
                                       ,to = lubridate::parse_date_time(format(as.POSIXlt(endTimeStamp), "%b %d %Y %H:%M:%S"),tz=Sys.timezone()
                                                                        ,orders = "b d Y H:M:S")
-                                      ,by = dif))
+                                      ,by = dif)) 
   } else if (average == "30") {
     dif <- as.difftime(30, units = 'mins')
     
