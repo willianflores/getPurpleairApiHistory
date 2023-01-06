@@ -118,21 +118,21 @@ getPurpleairApiHistory <- function(
   }
   
   # Set Time Stamp
-  t_dif <- as.POSIXct(endTimeStamp) - as.POSIXct(startTimeStamp)
+  t_dif <- as.POSIXct(endTimeStamp, tz="UTC") - as.POSIXct(startTimeStamp, tz="UTC")
 
-  if (t_dif < as.difftime(48, units = 'hours') ) {
-    start_timestamps <- as.POSIXct(startTimeStamp)
+  if (t_dif <= as.difftime(48, units = 'hours') ) {
+    start_timestamps <- as.POSIXct(startTimeStamp, tz="UTC")
   
-    end_timestamps   <- as.POSIXct(endTimeStamp) 
+    end_timestamps   <- as.POSIXct(endTimeStamp, tz="UTC") 
   } else {
-    start_timestamps <- seq(from=as.POSIXct(startTimeStamp)
-                          ,to=as.POSIXct(endTimeStamp),by="2 days")
+    start_timestamps <- seq(from=as.POSIXct(startTimeStamp, tz="UTC")
+                          ,to=as.POSIXct(endTimeStamp, tz="UTC"),by="2 days")
   
-    end_timestamps   <- seq(from=as.POSIXct(startTimeStamp) + as.difftime(172799, units = 'secs')
-                          ,to=as.POSIXct(endTimeStamp),by="2 days")
+    end_timestamps   <- seq(from=as.POSIXct(startTimeStamp, tz="UTC") + as.difftime(172799, units = 'secs')
+                          ,to=as.POSIXct(endTimeStamp, tz="UTC"),by="2 days")
 
     if(length(start_timestamps) != length(end_timestamps)) {
-      end_timestamps   <- c(end_timestamps, as.POSIXct(endTimeStamp))
+      end_timestamps   <- c(end_timestamps, as.POSIXct(endTimeStamp, tz="UTC"))
     }
   }
 
@@ -140,41 +140,41 @@ getPurpleairApiHistory <- function(
   if (average == "10") {
     dif <- as.difftime(10, units = 'mins')
     
-    other_df <- data.frame(time_stamp = seq(from = lubridate::parse_date_time(format(as.POSIXlt(startTimeStamp), "%b %d %Y %H:%M:%S"),tz=Sys.timezone()
+    other_df <- data.frame(time_stamp = seq(from = lubridate::parse_date_time(format(as.POSIXct(startTimeStamp), "%b %d %Y %H:%M:%S"), tz="UTC"
                                                                         ,orders = "b d Y H:M:S")
-                                      ,to = lubridate::parse_date_time(format(as.POSIXlt(endTimeStamp), "%b %d %Y %H:%M:%S"),tz=Sys.timezone()
+                                      ,to = lubridate::parse_date_time(format(as.POSIXct(endTimeStamp), "%b %d %Y %H:%M:%S"), tz="UTC"
                                                                        ,orders = "b d Y H:M:S")
                                       ,by = dif)) 
   } else if (average == "30") {
     dif <- as.difftime(30, units = 'mins')
     
-    other_df <- data.frame(time_stamp = seq(from = lubridate::parse_date_time(format(as.POSIXlt(startTimeStamp), "%b %d %Y %H:%M:%S"),tz=Sys.timezone()
+    other_df <- data.frame(time_stamp = seq(from = lubridate::parse_date_time(format(as.POSIXct(startTimeStamp), "%b %d %Y %H:%M:%S"), tz="UTC"
                                                                         ,orders = "b d Y H:M:S")
-                                      ,to = lubridate::parse_date_time(format(as.POSIXlt(endTimeStamp), "%b %d %Y %H:%M:%S"),tz=Sys.timezone()
+                                      ,to = lubridate::parse_date_time(format(as.POSIXct(endTimeStamp), "%b %d %Y %H:%M:%S"), tz="UTC"
                                                                        ,orders = "b d Y H:M:S")
                                       ,by = dif))
   } else if (average == "60") {
     dif <- as.difftime(60, units = 'mins')
     
-    other_df <- data.frame(time_stamp = seq(from = lubridate::parse_date_time(format(as.POSIXlt(startTimeStamp), "%b %d %Y %H:%M:%S"),tz=Sys.timezone()
+    other_df <- data.frame(time_stamp = seq(from = lubridate::parse_date_time(format(as.POSIXct(startTimeStamp), "%b %d %Y %H:%M:%S"), tz="UTC"
                                                                         ,orders = "b d Y H:M:S")
-                                      ,to = lubridate::parse_date_time(format(as.POSIXlt(endTimeStamp), "%b %d %Y %H:%M:%S"),tz=Sys.timezone()
+                                      ,to = lubridate::parse_date_time(format(as.POSIXct(endTimeStamp), "%b %d %Y %H:%M:%S"), tz="UTC"
                                                                        ,orders = "b d Y H:M:S")
                                       ,by = dif))
   } else if (average == "360") {
     dif <- as.difftime(360, units = 'mins')
     
-    other_df <- data.frame(time_stamp = seq(from = lubridate::parse_date_time(format(as.POSIXlt(startTimeStamp), "%b %d %Y %H:%M:%S"),tz=Sys.timezone()
+    other_df <- data.frame(time_stamp = seq(from = lubridate::parse_date_time(format(as.POSIXct(startTimeStamp), "%b %d %Y %H:%M:%S"), tz="UTC"
                                                                         ,orders = "b d Y H:M:S")
-                                      ,to = lubridate::parse_date_time(format(as.POSIXlt(endTimeStamp), "%b %d %Y %H:%M:%S"),tz=Sys.timezone()
+                                      ,to = lubridate::parse_date_time(format(as.POSIXct(endTimeStamp), "%b %d %Y %H:%M:%S"), tz="UTC"
                                                                        ,orders = "b d Y H:M:S")
                                       ,by = dif))
   } else if (average == "1440") {
     dif <- as.difftime(1440, units = 'mins')
     
-    other_df <- data.frame(time_stamp = seq(from = lubridate::parse_date_time(format(as.POSIXlt(startTimeStamp), "%b %d %Y %H:%M:%S"),tz=Sys.timezone()
+    other_df <- data.frame(time_stamp = seq(from = lubridate::parse_date_time(format(as.POSIXct(startTimeStamp), "%b %d %Y %H:%M:%S"), tz="UTC"
                                                                         ,orders = "b d Y H:M:S")
-                                      ,to = lubridate::parse_date_time(format(as.POSIXlt(endTimeStamp), "%b %d %Y %H:%M:%S"),tz=Sys.timezone()
+                                      ,to = lubridate::parse_date_time(format(as.POSIXct(endTimeStamp), "%b %d %Y %H:%M:%S"), tz="UTC"
                                                                        ,orders = "b d Y H:M:S")
                                       ,by = dif))
   }
@@ -200,8 +200,8 @@ getPurpleairApiHistory <- function(
       for (j in 1:length(start_timestamps)) {
         # Set variables
         queryList = list(
-          start_timestamp = as.character(as.integer(as.POSIXct(start_timestamps[j], Sys.timezone()))),
-          end_timestamp = as.character(as.integer(as.POSIXct(end_timestamps[j], Sys.timezone()))),
+          start_timestamp = as.character(as.integer(as.POSIXct(start_timestamps[j], tz="UTC"))),
+          end_timestamp = as.character(as.integer(as.POSIXct(end_timestamps[j], tz="UTC"))),
           average = average,
           fields = fields)
         
@@ -243,7 +243,7 @@ getPurpleairApiHistory <- function(
           rm(r_dataframe)
           r_dataframe <- data.frame(matrix(ncol = length(r_parsed$fields), nrow = 1))
           names(r_dataframe) <- r_parsed$fields
-          r_dataframe$time_stamp <- as.character(as.integer(as.POSIXct(start_timestamps[j], Sys.timezone())))
+          r_dataframe$time_stamp <- as.character(as.integer(as.POSIXct(start_timestamps[j], tz="UTC")))
         }else{
           names(r_dataframe) <- r_parsed$fields
         }
@@ -251,11 +251,11 @@ getPurpleairApiHistory <- function(
         
         # Convert datetime format
         r_dataframe$time_stamp <- as.integer(r_dataframe$time_stamp)
-        r_dataframe$time_stamp <- as.POSIXlt(r_dataframe$time_stamp, origin="1970-01-01",  tz=Sys.timezone())
+        r_dataframe$time_stamp <- as.POSIXct(r_dataframe$time_stamp, origin="1970-01-01", tz="UTC")
         
         # Fill missing dates
         if (average != "0") {
-          other_df$time_stamp <- as.POSIXlt(other_df$time_stamp)
+          other_df$time_stamp <- as.POSIXct(other_df$time_stamp)
           r_dataframe                   <- dplyr::full_join(other_df, r_dataframe)
         }
         
@@ -300,8 +300,8 @@ getPurpleairApiHistory <- function(
     for (j in 1:length(start_timestamps)) {
       # Set variables
       queryList = list(
-        start_timestamp = as.character(as.integer(as.POSIXct(start_timestamps[j], Sys.timezone()))),
-        end_timestamp = as.character(as.integer(as.POSIXct(end_timestamps[j], Sys.timezone()))),
+        start_timestamp = as.character(as.integer(as.POSIXct(start_timestamps[j], tz="UTC"))),
+        end_timestamp = as.character(as.integer(as.POSIXct(end_timestamps[j], tz="UTC"))),
         average = average,
         fields = fields)
       
@@ -343,18 +343,18 @@ getPurpleairApiHistory <- function(
         rm(r_dataframe)
         r_dataframe <- as.data.frame(data.frame(matrix(ncol = length(r_parsed$fields), nrow = 1)))
         names(r_dataframe) <- r_parsed$fields
-        r_dataframe$time_stamp <- as.integer(as.POSIXct(start_timestamps[j], Sys.timezone()))
+        r_dataframe$time_stamp <- as.integer(as.POSIXct(start_timestamps[j], tz="UTC"))
       }else{
         names(r_dataframe) <- r_parsed$fields
       }
       
       ## Convert datetime format
       r_dataframe$time_stamp <- as.integer(r_dataframe$time_stamp)
-      r_dataframe$time_stamp <- as.POSIXlt(r_dataframe$time_stamp, origin="1970-01-01",  tz=Sys.timezone())
+      r_dataframe$time_stamp <- as.POSIXct(r_dataframe$time_stamp, origin="1970-01-01", tz="UTC")
       
       # Fill missing dates
       if (average != "0") {
-        other_df$time_stamp <- as.POSIXlt(other_df$time_stamp)
+        other_df$time_stamp <- as.POSIXct(other_df$time_stamp)
         r_dataframe                   <- dplyr::full_join(other_df, r_dataframe)
       }
       
