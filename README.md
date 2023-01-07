@@ -3,7 +3,7 @@
 R function to download historical data from PurpleAir sensors in the newer API.
 
 ## Usage
-```r
+```{r}
 getPurpleairApiHistory(
     sensorIndex,  
     apiReadKey,
@@ -17,7 +17,7 @@ getPurpleairApiHistory(
 ## Arguments
 | Argment | Description |
 | --- | --- |
-| `sensorIndex` | The sensor index found in the url (`?select=sensor_index`) of a selected sensor in the purpleair maps [purpleair map](https://map.purpleair.com/1/mPM25/a10/p31536000/cC4?select=3968#10.91/-10.0081/-67.8154). |
+| `sensorIndex` | The sensor index found in the url (`?select=sensor_index`) of a selected sensor in the [purpleair map](https://map.purpleair.com/1/mPM25/a10/p31536000/cC4?select=3968#10.91/-10.0081/-67.8154). |
 | `apiReadKey` | PurpleAir API read key with access to historical data. See [PurpleAir Community](https://community.purpleair.com/t/historical-api-endpoints-are-now-restricted/1557) website for more information. |
 | `startTimeStamp` | The beginning date in the format `"YYYY-MM-DD HH:mm:ss"`. |
 | `endTimeStamp` | The end date in the format `"YYYY-MM-DD" HH:mm:ss`. |
@@ -33,7 +33,7 @@ Dataframe of PurpleAir history data of a single sensor or multiple sensors.
 ## Examples
 
 ### For a single sensor
-```r
+```{r}
 getPurpleairApiHistory(
     sensorIndex    = "31105",  
     apiReadKey     = "43664AA0-305B-11ED-B5AA-42010A800010",
@@ -45,7 +45,7 @@ getPurpleairApiHistory(
 ```
 
 ### For multiple sensors
-```r
+```{r}
 getPurpleairApiHistory(
     sensorIndex    = c("31105","31105","57177"),  
     apiReadKey     = "43664AA0-305B-11ED-B5AA-42010A800010",
