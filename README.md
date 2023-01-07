@@ -3,7 +3,7 @@
 R function to download historical data from PurpleAir sensors in the newer API.
 
 ## Usage
-```{r}
+```r
 getPurpleairApiHistory(
     sensorIndex,  
     apiReadKey,
@@ -33,7 +33,7 @@ Dataframe of PurpleAir history data of a single sensor or multiple sensors.
 ## Examples
 
 ### For a single sensor
-```{r}
+```r
 getPurpleairApiHistory(
     sensorIndex    = "31105",  
     apiReadKey     = "43664AA0-305B-11ED-B5AA-42010A800010",
@@ -45,7 +45,7 @@ getPurpleairApiHistory(
 ```
 
 ### For multiple sensors
-```{r}
+```r
 getPurpleairApiHistory(
     sensorIndex    = c("31105","31105","57177"),  
     apiReadKey     = "43664AA0-305B-11ED-B5AA-42010A800010",
