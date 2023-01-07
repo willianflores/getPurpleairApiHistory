@@ -209,7 +209,7 @@ getPurpleairApiHistory <- function(
         r_temp <- httr::GET(
           URLbase,
           query = queryList,
-          config = add_headers("X-API-Key" = Read_Key)
+          config = add_headers("X-API-Key" = apiReadKey)
         )
         
         # Error response
@@ -268,7 +268,7 @@ getPurpleairApiHistory <- function(
       
       # Add basic information
       if (nrow(r_for) != 0) {
-        r_for$sensor_id   <- sensor_id_list[i]
+        r_for$sensor_id   <- sensorIndex[i]
       }
       
       # Set final request data frame
@@ -309,7 +309,7 @@ getPurpleairApiHistory <- function(
       r_temp <- httr::GET(
         URLbase,
         query = queryList,
-        config = add_headers("X-API-Key" = Read_Key)
+        config = add_headers("X-API-Key" = apiReadKey)
       )
       
       # Error response
